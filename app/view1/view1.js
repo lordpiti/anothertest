@@ -6,7 +6,7 @@ angular.module('myApp.view1', [])
   templateUrl: 'view1/view1.html',
   controller: function() {
 
-    console.log("haha");
+    console.log("hahal");
   }
 })
 
