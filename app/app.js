@@ -22,7 +22,9 @@ config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRou
 
         // ABOUT PAGE AND MULTIPLE NAMED VIEWS =================================
         .state('view2', {
-            // we'll get to this in a bit       
+            url: '/view2',
+            //templateUrl: 'view1/view1.html'
+            component: 'testcomponent2'      
         });
 
 }]);
