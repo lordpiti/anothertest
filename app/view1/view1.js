@@ -15,11 +15,23 @@ angular.module('myApp.view1', ['myApp.service'])
       dateCreated: new Date()
     };
 
-    vm.submitForm = function(){
-      TestService.saveUser(vm.userData, function(response){
-        console.log(response);
-        $state.go('view2');
-      });
+    vm.submitForm = function(form){
+
+      if (form.$valid)
+      {
+        TestService.saveUser(vm.userData, function(response){
+          $state.go('view2');
+        });
+      }
+      else
+      {
+        vm.submitted = true;
+        angular.forEach(form.$error, function (field) {
+          angular.forEach(field, function(errorField){
+              errorField.$setTouched();
+          })
+        });
+      };
     };
 
     vm.showUser = function(){
@@ -35,8 +47,4 @@ angular.module('myApp.view1', ['myApp.service'])
         }
     });
   }]
-})
-
-.controller('View1Ctrl', [function() {
-
-}]);
+});
