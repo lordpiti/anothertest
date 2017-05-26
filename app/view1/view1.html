@@ -1,20 +1,46 @@
-<p>This is the partial for view 1.</p>
+<h1>Some useful government service</h1>
 
-<form name="personForm" id="personForm" novalidate>
+<form name="personForm" id="personForm" novalidate class="form-horizontal">
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="name">Name</label>
+        <div class="col-sm-6">
+            <input id="name" name="name" type="text" class="form-control" ng-model="$ctrl.userData.name" required />
+        </div>
+    </div>
 
-    name
-    <input id="name" name="name" type="text" ng-model="$ctrl.userData.name" required/>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="age">Age</label>
+        <div class="col-sm-1">
+            <input type="number" id="age" name="age" class="form-control" ng-model="$ctrl.userData.age" required/>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="sex">Sex</label>
+        <div class="col-sm-3">
+            <div class="radio-inline">
+                <label><input type="radio" name="sex" ng-model="$ctrl.userData.sex" value="Male">Male</label>
+            </div>
+            <div class="radio-inline">
+                <label><input type="radio" name="sex" ng-model="$ctrl.userData.sex" value="Female">Female</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="country">Country</label>
+        <div class="col-sm-5">
+            <select id="country" name="country" class="form-control" ng-model="$ctrl.userData.country" required>
+                <option ng-repeat="country in $ctrl.countryList" value="{{country.name}}">
+                    {{country.name}}
+                </option>
+            </select>
+        </div>
+    </div>
+    
     <label ng-if="!personForm.name.$valid">NAME REQUIRED</label>
-    age
-    <input type="number" id="age" name="age" ng-model="$ctrl.userData.age" required/>
     <label ng-if="!personForm.age.$valid">AGE REQUIRED</label>
-    <input type="radio" ng-model="$ctrl.userData.sex" value="Male"> Male    
-    <input type="radio" ng-model="$ctrl.userData.sex" value="Female"> Female 
-    <select id="country" name="country" ng-model="$ctrl.userData.country" required>
-        <option ng-repeat="country in $ctrl.countryList" value="{{country.name}}">
-            {{country.name}}
-        </option>
-    </select>
+
 
     <button class="btn btn-default" ng-click="$ctrl.submitForm()">APPLY</button>
 
