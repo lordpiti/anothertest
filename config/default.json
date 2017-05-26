@@ -11,5 +11,6 @@
     // countries RESTFul API
     "countriesAPI" : {
         "endpoint" : "https://restcountries.eu/rest/v1/region/Europe"
-    }
+    },
+    "deploymentMode": "dev"
 }

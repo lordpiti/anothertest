@@ -1,2 +1,20 @@
 <p>This is the partial for view 1.</p>
-<button class="btn btn-default">gssdgds</button>
+
+<form name="personForm" id="personForm" novalidate>
+
+    name
+    <input id="name" name="name" type="text" ng-model="$ctrl.userData.name" required/>
+    <label ng-if="!personForm.name.$valid">NAME REQUIRED</label>
+    age
+    <input type="number" id="age" name="age" ng-model="$ctrl.userData.age" required/>
+    <label ng-if="!personForm.age.$valid">AGE REQUIRED</label>
+    <input type="radio" ng-model="$ctrl.userData.sex" value="Male"> Male    
+    <input type="radio" ng-model="$ctrl.userData.sex" value="Female"> Female 
+    <select id="country" name="country" ng-model="$ctrl.userData.country" required>
+        <option ng-repeat="country in $ctrl.countryList" value="{{country.name}}">
+            {{country.name}}
+        </option>
+    </select>
+
+    <button class="btn btn-default" ng-click="$ctrl.submitForm()">APPLY</button>
+</form>
