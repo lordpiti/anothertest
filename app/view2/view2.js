@@ -1,13 +1,14 @@
 'use strict';
 
-angular.module('myApp.view2', [])
+angular.module('myApp.view2', ['myApp.service'])
 
 .component('testcomponent2', {
   templateUrl: 'view2/view2.html',
-  controller: function() {
+  controller: ['TestService',function(TestService) {
+    var vm = this;
 
-    console.log("haha2");
-  }
+    vm.userData = TestService.getUser();
+  }]
 })
 
 .controller('View2Ctrl', [function() {

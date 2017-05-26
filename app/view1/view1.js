@@ -4,7 +4,7 @@ angular.module('myApp.view1', ['myApp.service'])
 
 .component('testcom', {
   templateUrl: 'view1/view1.html',
-  controller: ['TestService',function(TestService) {
+  controller: ['TestService','$state',function(TestService, $state) {
     var vm = this;
 
     vm.userData = { 
@@ -18,8 +18,13 @@ angular.module('myApp.view1', ['myApp.service'])
     vm.submitForm = function(){
       TestService.saveUser(vm.userData, function(response){
         console.log(response);
+        $state.go('view2');
       });
     };
+
+    vm.showUser = function(){
+      console.log(TestService.getUser());
+    }
 
     TestService.getCountries(function (response) {
         if (response && response.status === 200) {
