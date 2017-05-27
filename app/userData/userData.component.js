@@ -4,7 +4,7 @@ angular.module('myApp.userDataComponent', ['myApp.service'])
 
 .component('userData', {
   templateUrl: 'userData/userData.component.html',
-  controller: ['TestService','$state',function(TestService, $state) {
+  controller: ['TestService',function(TestService) {
     var vm = this;
 
     vm.complete = false;
