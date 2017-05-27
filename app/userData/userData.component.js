@@ -1,11 +1,13 @@
 'use strict';
 
-angular.module('myApp.view1', ['myApp.service'])
+angular.module('myApp.userDataComponent', ['myApp.service'])
 
-.component('testcom', {
-  templateUrl: 'view1/view1.html',
+.component('userData', {
+  templateUrl: 'userData/userData.component.html',
   controller: ['TestService','$state',function(TestService, $state) {
     var vm = this;
+
+    vm.complete = false;
 
     vm.userData = { 
       name:"", 
@@ -20,7 +22,8 @@ angular.module('myApp.view1', ['myApp.service'])
       if (form.$valid)
       {
         TestService.saveUser(vm.userData, function(response){
-          $state.go('view2');
+          //$state.go('thankYou');
+          vm.complete = true;
         });
       }
       else
@@ -34,16 +37,12 @@ angular.module('myApp.view1', ['myApp.service'])
       };
     };
 
-    vm.showUser = function(){
-      console.log(TestService.getUser());
-    }
-
     TestService.getCountries(function (response) {
         if (response && response.status === 200) {
           vm.countryList = response.data;
         }
         else {
-          console.log("zzz");
+          console.log("error when getting the list of countries");
         }
     });
   }]

@@ -45,8 +45,25 @@ function ($http) {
         });
     };
 
+    var _getUsers = function (cb) {
+        var _url = "/api/users";
+        $http({
+            method: 'GET',
+            url: _url
+        })
+        .then(function (response) {
+            cb(response);
+        },
+        // error
+        function (response) {
+            cb(response);
+        });
+
+    }
+
     return {
         getCountries: _getCountries,
+        getUsers: _getUsers,
         saveUser: _saveUser,
         getUser: _getUser,
         setUser: _setUser

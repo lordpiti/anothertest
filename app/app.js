@@ -4,28 +4,28 @@
 angular.module('myApp', [
   'ui.router',
   'ngMessages',
-  'myApp.view1',
-  'myApp.view2',
+  'myApp.userDataComponent',
+  'myApp.userListComponent',
   'myApp.version'
 ]).
 config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
 
-    $urlRouterProvider.otherwise('/view1');
+    $urlRouterProvider.otherwise('/userData');
 
     $stateProvider
 
         // HOME STATES AND NESTED VIEWS ========================================
-        .state('view1', {
-            url: '/view1',
+        .state('userData', {
+            url: '/userData',
             //templateUrl: 'view1/view1.html'
-            component: 'testcom'
+            component: 'userData'
         })
 
         // ABOUT PAGE AND MULTIPLE NAMED VIEWS =================================
-        .state('view2', {
-            url: '/view2',
+        .state('userList', {
+            url: '/userList',
             //templateUrl: 'view1/view1.html'
-            component: 'testcomponent2'      
+            component: 'userList'      
         });
 
 }]);
