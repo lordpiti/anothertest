@@ -11,8 +11,10 @@ var rename = require('gulp-rename');
 var util = require('gulp-util');
 
 var projectFiles=[
-        'app/bower_components/jquery/dist/jquery.min.js',
-        'app/bower_components/bootstrap/dist/js/bootstrap.min.js',
+  'app/services/service.js',
+  'app/userData/userData.component.js',
+  'app/userList/userList.component.js',
+  'app/app.js',
     ];
 
 var lessFiles =[
@@ -45,4 +47,15 @@ gulp.task('minifyProject-less', function () {
         .pipe(gulp.dest('app/dist'));
 });
 
-gulp.task('default', ['clean','scriptsProjectPages','minifyProject-less'], function () { });
+var htmlreplace = require('gulp-html-replace');
+ 
+gulp.task('replaceBundlesInHTML', function() {
+  gulp.src('app/index.html')
+    .pipe(
+        htmlreplace({'css': 'styles.min.css',
+        'js': 'dist/projectScripts.min.js'})
+    )
+    .pipe(gulp.dest('app/build'));
+});
+
+gulp.task('default', ['clean','scriptsProjectPages','minifyProject-less','replaceBundlesInHTML'], function () { });
