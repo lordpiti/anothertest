@@ -13,17 +13,13 @@ config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRou
 
     $stateProvider
 
-        // HOME STATES AND NESTED VIEWS ========================================
         .state('userData', {
             url: '/userData',
-            //templateUrl: 'view1/view1.html'
             component: 'userData'
         })
 
-        // ABOUT PAGE AND MULTIPLE NAMED VIEWS =================================
         .state('userList', {
             url: '/userList',
-            //templateUrl: 'view1/view1.html'
             component: 'userList'      
         });
 
