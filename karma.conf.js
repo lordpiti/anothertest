@@ -9,8 +9,6 @@ module.exports = function(config) {
       'app/bower_components/angular-ui-router/release/angular-ui-router.min.js',
       'app/components/**/*.js',
       'app/services/*.js',
-      'app/userData/**/*.js',
-      'app/userList/**/*.js',
       'tests/*.spec.js'
     ],
 

@@ -3,7 +3,7 @@
 angular.module('myApp.userDataComponent', ['myApp.service'])
 
 .component('userData', {
-  templateUrl: 'userData/userData.component.html',
+  templateUrl: 'components/userData/userData.component.html',
   controller: ['TestService',function(TestService) {
     var vm = this;
 

@@ -12,9 +12,8 @@ var util = require('gulp-util');
 var config = require('config');
 
 var projectFiles=[
-  'app/services/service.js',
-  'app/userData/userData.component.js',
-  'app/userList/userList.component.js',
+  'app/services/**/*.js',
+  'app/components/**/*.js',
   'app/app.js',
     ];
 

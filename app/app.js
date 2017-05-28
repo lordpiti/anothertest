@@ -5,8 +5,7 @@ angular.module('myApp', [
   'ui.router',
   'ngMessages',
   'myApp.userDataComponent',
-  'myApp.userListComponent',
-  'myApp.version'
+  'myApp.userListComponent'
 ]).
 config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
 
