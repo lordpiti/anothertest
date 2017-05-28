@@ -9,6 +9,7 @@ var minifyCss = require('gulp-minify-css');
 var merge = require('merge2');
 var rename = require('gulp-rename');
 var util = require('gulp-util');
+var config = require('config');
 
 var projectFiles=[
   'app/services/service.js',
@@ -50,12 +51,22 @@ gulp.task('minifyProject-less', function () {
 var htmlreplace = require('gulp-html-replace');
  
 gulp.task('replaceBundlesInHTML', function() {
-  gulp.src('app/index.html')
-    .pipe(
-        htmlreplace({'css': 'styles.min.css',
-        'js': 'dist/projectScripts.min.js'})
-    )
-    .pipe(gulp.dest('app/build'));
+    var deploymentMode = config.get('deploymentMode');
+    
+    if (deploymentMode=="rel"){
+        gulp.src('index.html')
+        .pipe(
+            htmlreplace({'css': 'styles.min.css',
+            'js': 'dist/projectScripts.min.js'})
+        )
+        .pipe(gulp.dest('app'));
+    }
+    else
+    {
+        gulp.src('index.html')
+        .pipe(gulp.dest('app'));
+    }
+
 });
 
 gulp.task('default', ['clean','scriptsProjectPages','minifyProject-less','replaceBundlesInHTML'], function () { });

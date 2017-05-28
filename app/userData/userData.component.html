@@ -16,11 +16,12 @@
         <div class="form-group">
             <label class="control-label col-sm-2" for="age">Age</label>
             <div class="col-sm-1" ng-class="{ 'has-error':personForm.age.$invalid && personForm.age.$touched }">
-                <input type="number" id="age" name="age" class="form-control" ng-model="$ctrl.userData.age" required/>
+                <input type="number" id="age" name="age" class="form-control" ng-model="$ctrl.userData.age" ng-pattern="/^\d+$/" required/>
             </div>
             <div ng-if="personForm.age.$touched" ng-messages="personForm.age.$error">
                 <p class="validation-error" ng-message="required">Required</p>
-                <p ng-message="number">You did not enter a valid age</p>
+                <p class="validation-error" ng-message="pattern">Age must be a positive integer</p>
+                <p class="validation-error" ng-message="number">You did not enter a valid age</p>
             </div>
         </div>
 
