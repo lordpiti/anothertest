@@ -14,7 +14,7 @@ function ($http) {
     }
 
     var _getCountries = function (cb) {
-        var _url = "https://restcountries.eu/rest/v1/region/Europe";
+        var _url = "/api/countries";
         $http({
             method: 'GET',
             url: _url

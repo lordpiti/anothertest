@@ -41,8 +41,9 @@
             <label class="control-label col-sm-2" for="country">Country</label>
             <div class="col-sm-5" ng-class="{ 'has-error':personForm.country.$invalid && personForm.country.$touched }">
                 <select id="country" name="country" class="form-control" ng-model="$ctrl.userData.country" required>
-                    <option ng-repeat="country in $ctrl.countryList" value="{{country.name}}">
-                        {{country.name}}
+                    <option value="" disabled>Select country</option>
+                    <option ng-repeat="country in $ctrl.countryList" value="{{country}}">
+                        {{country}}
                     </option>
                 </select>
             </div>

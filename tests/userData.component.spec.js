@@ -11,7 +11,7 @@ beforeEach(inject([
         ctrl = $ctrl('userData', null,{ 
         });
         httpBackend = $httpBackend;
-        httpBackend.when('GET', 'https://restcountries.eu/rest/v1/region/Europe').respond(200, countryList);
+        httpBackend.when('GET', '/api/countries').respond(200, countryList);
     }
 ]));
 
