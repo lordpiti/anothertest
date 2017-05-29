@@ -7,7 +7,7 @@ angular.module('myApp.userListComponent', ['myApp.service'])
   controller: ['TestService',function(TestService) {
     var vm = this;
 
-    vm.userData = TestService.getUsers(function(response){
+    TestService.getUsers(function(response){
       if (response && response.status === 200) {
           vm.users = response.data;
         }

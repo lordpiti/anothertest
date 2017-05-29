@@ -3,7 +3,7 @@ describe('Component: userData', function () {
  
     var ctrl, httpBackend;
 
-    var countryList = ['United Kingdom', 'Italy', 'Portugal'];
+    var countryList = ['United Kingdom', 'Italy', 'Spain'];
 
 beforeEach(inject([
     '$componentController','$httpBackend',
