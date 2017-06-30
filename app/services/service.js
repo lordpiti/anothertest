@@ -40,7 +40,6 @@ function ($http) {
             data: user
         })
         .then(function (response) {
-            _setUser(user);
             cb(response);
         })
         .catch(function (data, status) {
