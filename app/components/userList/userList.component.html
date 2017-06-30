@@ -6,13 +6,16 @@
       <th>Age</th>
       <th>Sex</th>
       <th>Country</th>
+      <th></th>
     </tr>
     <tbody>
-      <tr ng-repeat="item in $ctrl.users">
+      <tr ng-repeat="item in $ctrl.users track by $index">
         <td>{{item.name}}</td>
         <td>{{item.age}}</td>
         <td>{{item.sex}}</td>
         <td>{{item.country}}</td>
+        <td><button class="btn btn-primary" ng-click="$ctrl.toggle($index)">show</button>
+          <user-details user-index="$index" ng-if="item.visible"></user-details></td>
       </tr>
     </tbody>
   </table>
