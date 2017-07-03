@@ -19,6 +19,16 @@ config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRou
             component: 'userData'
         })
 
+        .state('userDetails', {
+            url: '/userDetails/{id}',
+            component: 'userDetails',
+            resolve:{
+                userIndex: function(TestService,$transition$){
+                    return $transition$.params().id;
+                }
+            }
+        })
+
         .state('userList', {
             url: '/userList',
             component: 'userList'      
