@@ -7,16 +7,20 @@ angular.module('myApp.userDataComponent', ['myApp.service'])
   controller: ['TestService',function(TestService) {
     var vm = this;
 
-    vm.complete = false;
+    this.$onInit = function(){
+      vm.complete = false;
 
-    // Initialise the object to be populated by the form fields
-    vm.userData = { 
-      name:"", 
-      age: null, 
-      country: null, 
-      sex: "Male", 
-      dateCreated: new Date()
-    };
+      // Initialise the object to be populated by the form fields
+      vm.userData = { 
+        name:"", 
+        age: null, 
+        country: null, 
+        sex: "Male", 
+        dateCreated: new Date()
+      };
+    }
+
+
 
     // Function to submit the form
     vm.submitForm = function(form){

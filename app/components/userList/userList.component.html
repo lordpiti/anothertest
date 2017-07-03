@@ -1,4 +1,13 @@
 <h1>User list</h1>
+<br/>
+<div ng-if="$ctrl.service.currentUser">
+  {{$ctrl.service.currentUser.name}}
+</div>
+<div ng-if="!$ctrl.service.currentUser">
+  No user has been selected
+</div>
+
+
 <div class="table-responsive">
   <table class="table table-striped">
     <tr>

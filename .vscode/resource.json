@@ -1,0 +1,7 @@
+{
+"css": {
+    "style": [
+      "../app/bower_components/bootstrap/dist/bootstrap.css"
+    ]
+  }
+}

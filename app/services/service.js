@@ -3,6 +3,7 @@ var projectAdminService = angular.module('myApp.service', []);
 projectAdminService.factory('TestService', ['$http',
 function ($http) {
 
+    var _currentUser = null;
 
     var _getUser = function(index, cb){
         _getUsers(function(response){
@@ -54,6 +55,7 @@ function ($http) {
             url: _url
         })
         .then(function (response) {
+            
             cb(response);
         },
         // error
@@ -67,7 +69,8 @@ function ($http) {
         getCountries: _getCountries,
         getUsers: _getUsers,
         saveUser: _saveUser,
-        getUser: _getUser
+        getUser: _getUser,
+        currentUser: _currentUser
     }
 
 }]);

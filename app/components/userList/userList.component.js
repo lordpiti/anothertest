@@ -10,7 +10,9 @@ angular.module('myApp.userListComponent', ['myApp.service'])
 
     this.$onInit = function() {
 
-      TestService.getUsers(function(response){
+      vm.service = TestService;    
+      vm.service.getUsers(function(response){
+        
         if (response && response.status === 200) {
             vm.users = response.data;
           }
@@ -23,5 +25,6 @@ angular.module('myApp.userListComponent', ['myApp.service'])
     vm.toggle = function(index){
       vm.users[index].visible = vm.users[index].visible!=null? !vm.users[index].visible: true;
     }
+
   }]
 });

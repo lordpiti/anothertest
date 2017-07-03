@@ -9,10 +9,11 @@ angular.module('myApp.userDetailsComponent', ['myApp.service'])
   },
   controller: ['TestService',function(TestService) {
 
-    this.$onInit = function() {
-      var vm = this;
+    var vm = this;
 
-      TestService.getUser(vm.userIndex, function(response){
+    this.$onInit = function() {
+      vm.service = TestService;
+      vm.service.getUser(vm.userIndex, function(response){
         if (response) {
             vm.user = response;
           }
@@ -22,5 +23,10 @@ angular.module('myApp.userDetailsComponent', ['myApp.service'])
       });
     };
 
+    vm.setSelected = function(currentUser){
+      vm.service.currentUser = currentUser;
+    }
+
+    
   }]
 });

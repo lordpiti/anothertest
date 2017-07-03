@@ -10,6 +10,7 @@ beforeEach(inject([
     function($ctrl, $httpBackend){
         ctrl = $ctrl('userData', null,{ 
         });
+        ctrl.$onInit();
         httpBackend = $httpBackend;
         httpBackend.when('GET', '/api/countries').respond(200, countryList);
     }
@@ -32,7 +33,6 @@ describe('when submitting the form', function () {
 
         it('should display a message after API call', function () {
             ctrl.submitForm({ $valid : true });
-
             httpBackend.flush();
 
             expect(ctrl.complete).toBe(true);
