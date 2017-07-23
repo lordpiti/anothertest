@@ -11,8 +11,16 @@ angular.module('myApp.userListComponent', ['myApp.service'])
     this.$onInit = function() {
 
       vm.service = TestService;    
-      vm.service.getUsers(function(response){
-        
+
+      // vm.service.testPromises()
+      //   .then(response=>{
+      //     response.forEach(item=>console.log(item));
+      //     console.log(response)
+      //   });
+
+
+      vm.service.getUsersPromise().then(response=>{
+        vm.dato = vm.jaja(2);
         if (response && response.status === 200) {
             vm.users = response.data;
           }
@@ -24,6 +32,10 @@ angular.module('myApp.userListComponent', ['myApp.service'])
 
     vm.toggle = function(index){
       vm.users[index].visible = vm.users[index].visible!=null? !vm.users[index].visible: true;
+    }
+
+    vm.jaja = function(je){
+      return 9*je;
     }
 
   }]
