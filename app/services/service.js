@@ -1,7 +1,7 @@
 var projectAdminService = angular.module('myApp.service', []);
 
-projectAdminService.factory('TestService', ['$http','$q',
-function ($http, $q) {
+projectAdminService.factory('TestService', ['$http','$q','lodash',
+function ($http, $q,lodash) {
 
     var _currentUser = null;
 
@@ -91,7 +91,7 @@ function ($http, $q) {
         let promisesList = arrayUrls.map(getDataFromUrl);
 
         return Promise.all(promisesList)
-            .then(response=>{return [response[0],response[1],3]});
+            .then(response=>[response[0],response[1],3]);
     }
 
     //https://jsfiddle.net/jeremylikness/Q2jMG/
@@ -103,14 +103,48 @@ function ($http, $q) {
         let promisesList = arrayUrls.map(getDataFromUrl);
 
         return $q.all(promisesList)
-            .then(response=>{return [response[0],response[1],3]});
+            .then(response=>[response[0],response[1],3]);
     }
 
-    var getDataFromUrl = (url)=> {
-        return $http({
+    var getDataFromUrl = (url)=> 
+        $http({
             method: 'GET',
             url: url
-        }).then(x=> {return x.data.msg});
+        }).then(x=> x.data.msg);
+    
+
+    var _testLodash = () => {
+
+        let players = [
+            {
+                name: 'Messi',
+                category: 'Forward',
+                age: 30
+        },
+            {
+                name: 'Neymar',
+                category: 'Forward',
+                age: 25
+        },
+            {
+                name: 'Pique',
+                category: 'Defender',
+                age: 30
+        },
+            {
+                name: 'Busquets',
+                category: 'Center-back',
+                age: 29
+        }
+        ];
+
+        let groupedPlayers = lodash.groupBy(players,x=>x.category);
+
+        console.log(groupedPlayers);
+
+        let newGroupedPlayers = lodash.map(groupedPlayers,(value, key) => ({category: key, items: value}));
+
+        console.log(newGroupedPlayers);
     }
 
     return {
@@ -120,7 +154,8 @@ function ($http, $q) {
         saveUser: _saveUser,
         getUser: _getUser,
         currentUser: _currentUser,
-        testPromises: _testPromises3
+        testPromises: _testPromises3,
+        testLodash: _testLodash
     }
 
 }]);

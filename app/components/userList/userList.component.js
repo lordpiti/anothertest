@@ -12,11 +12,11 @@ angular.module('myApp.userListComponent', ['myApp.service'])
 
       vm.service = TestService;    
 
-      // vm.service.testPromises()
-      //   .then(response=>{
-      //     response.forEach(item=>console.log(item));
-      //     console.log(response)
-      //   });
+      vm.service.testPromises()
+        .then(response=>{
+          response.forEach(item=>console.log(item));
+          console.log(response)
+        });
 
 
       vm.service.getUsersPromise().then(response=>{
@@ -28,6 +28,8 @@ angular.module('myApp.userListComponent', ['myApp.service'])
             console.log("error when getting the list of users");
           }
       });
+
+      vm.service.testLodash();
     }
 
     vm.toggle = function(index){

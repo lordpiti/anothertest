@@ -6,7 +6,7 @@ angular.module('myApp', [
   'ngMessages',
   'myApp.userDataComponent',
   'myApp.userDetailsComponent',
-  'myApp.userListComponent'
+  'myApp.userListComponent','ngLodash'
 ]).
 config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
 
