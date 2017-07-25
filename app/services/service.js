@@ -135,6 +135,12 @@ function ($http, $q,lodash) {
                 name: 'Busquets',
                 category: 'Center-back',
                 age: 29
+        },
+            ,
+            {
+                name: 'Tano',
+                category: 'IMBECIL',
+                age: 32
         }
         ];
 
