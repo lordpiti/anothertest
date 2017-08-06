@@ -1,16 +1,28 @@
 describe('Component: userList', function () {
   beforeEach(module('myApp.userListComponent'));
  
-    var ctrl, httpBackend;
+    let ctrl, httpBackend, scope;
 
-    var userList = [{ name: "ff"},{ name: "cc"}];
+    let userList = [{ name: "ff"},{ name: "cc"}];
+
+    let mockService = {
+        testPromises: () => {},
+        testLodash: () => {},
+        getUsersPromise: () => {}
+    }
 
     beforeEach(inject([
-        '$componentController','$httpBackend',
-        function($ctrl, $httpBackend){
-            ctrl = $ctrl('userList', null,{ 
+        '$componentController','$httpBackend', '$rootScope', '$q',
+        function($ctrl, $httpBackend, $rootScope, $q){
+
+            scope = $rootScope.$new();
+
+            ctrl = $ctrl('userList', { $scope: scope, TestService: mockService },{ 
             });
-            //spyOn(ctrl, 'jaja').and.returnValue(3);
+
+            spyOn(mockService, 'testPromises').and.returnValue($q.when([1,2,3]));
+            spyOn(mockService, 'getUsersPromise').and.returnValue($q.when({ data: userList, status: 200}));
+
             spyOn(ctrl, 'jaja').and.callFake(function(myParam) {
                 if (myParam == 2) {
                     return 4;
@@ -19,15 +31,13 @@ describe('Component: userList', function () {
                 }
             });
             ctrl.$onInit();
-            httpBackend = $httpBackend;
-            httpBackend.when('GET', '/api/users').respond(200, userList);
         }
     ]));
 
     describe('when controller loads', function () {
         it('should load the user list', function() {
-
-            httpBackend.flush();
+            
+            scope.$digest();
 
             expect(ctrl.users).toEqual(userList);
             expect(ctrl.dato).toEqual(4);
@@ -39,8 +49,7 @@ describe('Component: userList', function () {
     describe('when clicking a button', function () {
 
         it('should display a message after API call', function () {
-            //ctrl.users = userList;
-            httpBackend.flush();
+            ctrl.users = userList;
             
             ctrl.toggle(0);
 

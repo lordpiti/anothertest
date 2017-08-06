@@ -33,7 +33,6 @@ describe('Component: userDetails', function () {
         it('should change selected item', function () {
             var theOne = { name: "bu"};
             ctrl.setSelected(theOne);
-console.log(ctrl.service);
             expect(ctrl.service.currentUser).toEqual(theOne);
         });
     });

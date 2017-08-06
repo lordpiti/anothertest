@@ -1,7 +1,7 @@
 var projectAdminService = angular.module('myApp.service', []);
 
-projectAdminService.factory('TestService', ['$http','$q','lodash',
-function ($http, $q,lodash) {
+projectAdminService.factory('TestService', ['$http','$q',
+function ($http, $q) {
 
     var _currentUser = null;
 
